@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+
+
+    <style>
+        .container {
+        display: flex;
+        justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="col">
+        <form name="f" th:action="@{/submitAccount}" method="post">
+                <h2>Create New Saving Account:</h2>
+                <input type="text" name="accountName" placeholder="Account Name" required><br><br>
+                <input type="text" name="currency" placeholder="Currency" required><br><br>
+                <input type="submit" value="Submit">
+        </form>
+        <form class="button" th:action="@{/user}" method="GET">
+            <input type="submit" value="Back"/>
+            <p style="color:red;"><span th:unless="${isNoAccountRegistred}">The user already has one account registered!</span></p>
+            <p style="color:red;"><span th:unless="${inWorkingHours}">You can not create an account outside our working hours: 9:00-17:00!</span></p>
+            <p style="color:red;"><span th:unless="${inWorkingDays}">You can not create an account outside our working days: Monday to Friday!</span></p>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

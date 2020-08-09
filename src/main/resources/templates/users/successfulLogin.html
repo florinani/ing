@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List of users</title>
+</head>
+
+<body>
+
+<h2>Username: <span th:text="${user.userName}"/></h2>
+
+<table>
+    <tr>
+        <tr>ID: <span th:text="${user.id}"/></tr><br>
+        <tr>UserName: <span th:text="${user.userName}"/></tr><br>
+        <tr>FirstName: <span th:text="${user.firstName}"/></tr><br>
+        <tr>LastName: <span th:text="${user.lastName}"/></tr><br>
+        <tr>Address: <span th:text="${user.address}"/></tr><br>
+        <tr>Email: <span th:text="${user.email}"/></tr><br>
+        <tr>Phone: <span th:text="${user.phoneNumber}"/></tr><br>
+    </tr>
+</table>
+
+<h2>Accounts:</h2>
+
+<table>
+    <tr>
+        <td>ID</td>
+        <td>AccountNumber</td>
+        <td>AccountName</td>
+        <td>Balance</td>
+        <td>Currency</td>
+    </tr>
+
+    <tr th:each="savingAccount : ${savingAccountList}">
+        <td><span th:text="${savingAccount.id}"/></td>
+        <td><span th:text="${savingAccount.accountNumber}"/></td>
+        <td><span th:text="${savingAccount.name}"/></td>
+        <td><span th:text="${savingAccount.balance}"/></td>
+        <td><span th:text="${savingAccount.currency}"/></td>
+    </tr>
+</table>
+
+
+
+<form name="f" th:action="@{/addAccount}" method="get">
+    <div class="container">
+        <div class="col">
+            <input type="submit" value="ADD ACCOUNT">
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
